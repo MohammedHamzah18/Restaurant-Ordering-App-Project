@@ -1,0 +1,16 @@
+@model Order
+
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+
+<div class="confirmation-box">
+    <p class="eyebrow">Order confirmed</p>
+    <h1 class="h2">Thanks, @Model.CustomerName.</h1>
+    <p class="text-secondary">Your order #@Model.Id was placed on @Model.OrderedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt").</p>
+    <p class="h4">Total: INR @Model.Total.ToString("0.00")</p>
+    <div class="d-flex gap-2 flex-wrap mt-4">
+        <a class="btn btn-dark" asp-controller="Menu" asp-action="Index">Order More</a>
+        <a class="btn btn-outline-dark" asp-action="Details" asp-route-id="@Model.Id">View Details</a>
+    </div>
+</div>

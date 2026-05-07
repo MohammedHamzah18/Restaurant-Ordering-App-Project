@@ -1,0 +1,56 @@
+@model IReadOnlyList<Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+    <div>
+        <h1 class="h2 mb-1">Orders</h1>
+        <p class="text-secondary mb-0">Staff view for recently placed restaurant orders.</p>
+    </div>
+    <a class="btn btn-dark" asp-controller="Menu" asp-action="Index">New Order</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <h2 class="h5">No orders yet</h2>
+        <p class="text-secondary mb-0">Completed checkouts will appear here.</p>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                    <th>Items</th>
+                    <th class="text-end">Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>
+                            <strong>#@order.Id</strong>
+                            <div class="text-secondary small">@order.OrderedAt.ToLocalTime().ToString("dd MMM, hh:mm tt")</div>
+                        </td>
+                        <td>@order.CustomerName</td>
+                        <td><span class="badge text-bg-info">@order.Status</span></td>
+                        <td>@order.Items.Sum(item => item.Quantity)</td>
+                        <td class="text-end">INR @order.Total.ToString("0.00")</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-dark" asp-action="Details" asp-route-id="@order.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

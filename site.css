@@ -1,0 +1,129 @@
+html {
+  font-size: 14px;
+  min-height: 100%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  background: #f7f5f0;
+  color: #222;
+  margin-bottom: 60px;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus,
+.form-select:focus {
+  border-color: #7a4c24;
+  box-shadow: 0 0 0 0.18rem rgba(122, 76, 36, .18);
+}
+
+.navbar-brand {
+  letter-spacing: 0;
+}
+
+.home-hero {
+  background: linear-gradient(135deg, #fff 0%, #f4efe7 100%);
+  border: 1px solid #ece3d5;
+  border-radius: 8px;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.eyebrow {
+  color: #7a4c24;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .08rem;
+  text-transform: uppercase;
+}
+
+.hero-panel,
+.summary-box,
+.confirmation-box,
+.empty-state {
+  background: #fff;
+  border: 1px solid #e9e0d4;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.hero-panel {
+  display: grid;
+  min-height: 260px;
+  place-content: center;
+  text-align: center;
+}
+
+.hero-panel strong {
+  display: block;
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.menu-card {
+  border-color: #e9e0d4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.food-tile {
+  aspect-ratio: 16 / 8;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, .55), transparent 24%),
+    linear-gradient(135deg, #d35400, #2e7d5a);
+  color: #fff;
+  display: grid;
+  font-size: 3rem;
+  font-weight: 800;
+  place-items: center;
+}
+
+.food-tile-large {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  font-size: 8rem;
+}
+
+.summary-lines {
+  display: grid;
+  gap: .65rem 1rem;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 1.5rem;
+}
+
+.summary-lines dt,
+.summary-lines dd {
+  margin: 0;
+}
+
+.summary-lines dd {
+  text-align: right;
+}
+
+.summary-lines .total {
+  border-top: 1px solid #e5e5e5;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding-top: .75rem;
+}
+
+.quantity-input {
+  max-width: 90px;
+}
+
+.empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.footer {
+  line-height: 60px;
+}

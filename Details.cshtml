@@ -1,0 +1,59 @@
+@model Order
+
+@{
+    ViewData["Title"] = $"Order #{Model.Id}";
+}
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+    <div>
+        <h1 class="h2 mb-1">Order #@Model.Id</h1>
+        <p class="text-secondary mb-0">@Model.OrderedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt")</p>
+    </div>
+    <span class="badge text-bg-info">@Model.Status</span>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th class="text-end">Line Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    <tr>
+                        <td>
+                            <strong>@item.ItemName</strong>
+                            <div class="text-secondary small">INR @item.UnitPrice.ToString("0.00") each</div>
+                        </td>
+                        <td>@item.Quantity</td>
+                        <td class="text-end">INR @item.LineTotal.ToString("0.00")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-5">
+        <div class="summary-box">
+            <h2 class="h5">Customer</h2>
+            <p class="mb-1"><strong>@Model.CustomerName</strong></p>
+            <p class="mb-1">@Model.Email</p>
+            <p class="mb-3">@Model.PhoneNumber</p>
+            <h3 class="h6">Delivery Address</h3>
+            <p>@Model.DeliveryAddress</p>
+            @if (!string.IsNullOrWhiteSpace(Model.Notes))
+            {
+                <h3 class="h6">Notes</h3>
+                <p>@Model.Notes</p>
+            }
+            <dl class="summary-lines">
+                <dt>Total</dt>
+                <dd>INR @Model.Total.ToString("0.00")</dd>
+            </dl>
+        </div>
+    </div>
+</div>
